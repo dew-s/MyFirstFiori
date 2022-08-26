@@ -1,0 +1,36 @@
+<mvc:View controllerName="sap.nexus.zdewmo.controller.Home"
+          xmlns="sap.m"
+          xmlns:l="sap.ui.layout"
+          xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc">
+
+  <Page id="homePage" title="{i18n>homeTitle}" busy="{home>/busy}" busyIndicatorDelay="{home>/delay}">
+    <content>
+
+      <l:VerticalLayout class="sapUiContentPadding" width="100%">
+        <Label text="Sales Order (required)" labelFor="soInput" />
+        <Input id="soInput"
+               placeholder="Enter Sales Order"
+               required="true"
+               showSuggestion="true"
+               change="onChange"        
+               liveChange="onLiveChange"       
+               suggestionItems="{home>/f4_so_list}">
+          <suggestionItems>
+            <core:Item text="{home>Vbeln}" />
+          </suggestionItems>   
+        </Input>
+      </l:VerticalLayout>
+
+
+    </content>
+
+
+    <footer>
+      <Toolbar>
+        <ToolbarSpacer />
+        <Button text="Next" press="onPressNext" />
+      </Toolbar>
+    </footer>
+  </Page>
+</mvc:View>

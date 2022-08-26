@@ -1,0 +1,25 @@
+specVersion: "2.6"
+metadata:
+  name: "sap.nexus.zdewmo"
+type: application
+builder:
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        ignoreCertError: true
+        target:
+          url: http://s4hana1809.nexus-sr.com:8000
+          client: 300
+          auth: basic
+        credentials:
+          username: env:USERNAME
+          password: env:PASSWORD
+        app:
+          name: ZDEMO_PAPHANG
+          description: Paphang Demo Fiori
+          package: ZDEV
+          transport: S4HK901131
+        exclude:
+          - /test
+          - /localService

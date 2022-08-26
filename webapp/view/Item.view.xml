@@ -1,0 +1,51 @@
+<mvc:View controllerName="sap.nexus.zdewmo.controller.Item"
+          xmlns="sap.m"
+          xmlns:l="sap.ui.layout"
+          xmlns:core="sap.ui.core"
+          xmlns:mvc="sap.ui.core.mvc">
+
+  <Page id="itemPage" title="{i18n>itemTitle}" busy="{home>/busy}" busyIndicatorDelay="{home>/delay}">
+    <content>
+
+      <List items="{item>/so_items}" 
+            headerText="{home>/SO}" >
+
+        <ObjectListItem title="{item>Matnr}"
+                        type="Active"
+                        press="onListItemPress"
+                        number="{
+                                  parts:[{path:'item>Kwmeng'},{path:'item>Vrkme'}],
+                                  type: 'sap.ui.model.type.Unit',
+                                  formatOptions: {showMeasure: false}
+			                          }"
+                        numberUnit="{item>Vrkme}">
+          <!-- <firstStatus>
+            <ObjectStatus text="{Status}" 
+                          state="{
+                                   path: 'Status',
+                                   formatter: 'sap.m.sample.ObjectListItem.Formatter.status'
+                                 }" />
+          </firstStatus> -->
+
+          <ObjectAttribute text="Item No. {item>Posnr}" />
+
+          <customData>
+            <core:CustomData key="vbeln" value="{item>Vbeln}" />
+            <core:CustomData key="posnr" value="{item>Posnr}" />
+          </customData>
+         
+        </ObjectListItem>
+      </List>
+  
+    
+    </content>
+
+
+    <footer>
+      <Toolbar>
+        <ToolbarSpacer />
+        <Button text="Update" press="onPressUpdate" />
+      </Toolbar>
+    </footer>
+  </Page>
+</mvc:View>
